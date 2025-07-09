@@ -1,25 +1,13 @@
-// Importa o pacote para ler o que o usuário digita no terminal
-const readline = require('readline');
-
-// Cria uma forma de conversar com o usuário pelo terminal
-const teclado = readline.createInterface({
+const teclado = require('readline').createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-// Pergunta o nome do herói
 teclado.question("Digite o nome do herói: ", function(nome) {
-  
-  // Pergunta a quantidade de experiência
-  teclado.question("Digite a quantidade de experiência (XP) do herói: ", function(valorXP) {
-    
-    // Transforma o texto digitado em número
-    let xp = parseInt(valorXP);
-    
-    // Cria uma variável para guardar o nível
+  teclado.question("Digite a quantidade de experiência (XP): ", function(textoXp) {
+    let xp = parseInt(textoXp);
     let nivel = "";
 
-    // Agora usamos as condições para verificar o nível
     if (xp < 1000) {
       nivel = "Ferro";
     } else if (xp >= 1001 && xp <= 2000) {
@@ -40,10 +28,7 @@ teclado.question("Digite o nome do herói: ", function(nome) {
       nivel = "Desconhecido";
     }
 
-    // Mostra a mensagem final com o nome e o nível
-    console.log("\nO Herói de nome **" + nome + "** está no nível de **" + nivel + "**.");
-
-    // Fecha o programa
+    console.log(`\nO Herói de nome **${nome}** está no nível de **${nivel}**.`);
     teclado.close();
   });
 });
